@@ -1,38 +1,103 @@
-<html lang="pt-BR">
+<html>
  <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Perfil
-  </title>
   <script src="https://cdn.tailwindcss.com">
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   @keyframes blink {
+    0% {
+     opacity: 1;
+    }
+    50% {
+     opacity: 0;
+    }
+    100% {
+     opacity: 1;
+    }
+   }
+   .blinking-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+   }
+   @keyframes moveComet {
+    0% {
+     transform: translateX(-100vw) translateY(-100vh);
+    }
+    100% {
+     transform: translateX(100vw) translateY(100vh);
+    }
+   }
+   .comet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    background: white;
+    box-shadow: 0 0 10px 2px white;
+    animation: moveComet 5s linear infinite;
+   }
+   .stars {
+    width: 1px;
+    height: 1px;
+    background: white;
+    box-shadow: 0 0 2px 1px white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: twinkle 2s infinite alternate;
+   }
+   @keyframes twinkle {
+    0% {
+     opacity: 0.5;
+    }
+    100% {
+     opacity: 1;
+    }
+   }
+  </style>
  </head>
- <body class="bg-black text-white font-roboto">
-  <div class="flex flex-col items-center justify-center min-h-screen">
-   <div class="relative">
-    <img alt="Foto de perfil" class="rounded-full border-4 border-gray-700" height="200" src="https://avatars.githubusercontent.com/u/121637450?s=400&u=642904ff86ccbd29d93e7bfff4f5a499a61618fc&v=4" width="200"/>
+ <body class="bg-black flex items-center justify-center min-h-screen relative overflow-hidden">
+  <div class="absolute inset-0">
+   <div class="comet">
    </div>
-   <div class="flex space-x-6 mt-6">
-    <a class="text-blue-500 text-3xl" href="https://www.linkedin.com/in/otiiagosilva/" target="_blank">
-     <i class="fab fa-linkedin-in">
+   <div class="stars" style="top: 10%; left: 20%; animation-delay: 0s;">
+   </div>
+   <div class="stars" style="top: 30%; left: 40%; animation-delay: 1s;">
+   </div>
+   <div class="stars" style="top: 50%; left: 60%; animation-delay: 2s;">
+   </div>
+   <div class="stars" style="top: 70%; left: 80%; animation-delay: 3s;">
+   </div>
+   <div class="stars" style="top: 90%; left: 10%; animation-delay: 4s;">
+   </div>
+  </div>
+  <div class="text-center relative z-10">
+   <img alt="Perfil de @otiiagosilva" class="rounded-full w-64 h-64 mx-auto mb-6" height="256" src="https://avatars.githubusercontent.com/u/121637450?s=400&u=642904ff86ccbd29d93e7bfff4f5a499a61618fc&v=4" width="256"/>
+   <p class="text-white text-xl mb-4 shadow-lg blinking-cursor">
+    @otiiagosilva
+   </p>
+   <div class="flex justify-center space-x-8 text-4xl mb-6">
+    <a class="text-blue-600" href="https://www.linkedin.com/in/otiiagosilva/">
+     <i class="fab fa-linkedin">
      </i>
     </a>
-    <a class="text-purple-500 text-3xl" href="https://www.instagram.com/_otiiagosilva/profilecard/?igsh=MXB5cjJxbDJzanBwbg==" target="_blank">
+    <a class="text-pink-600" href="https://www.instagram.com/_otiiagosilva/profilecard/?igsh=MXB5cjJxbDJzanBwbg==">
      <i class="fab fa-instagram">
      </i>
     </a>
-    <a class="text-pink-500 text-3xl" href="https://www.tiktok.com/@_otiagosilva" target="_blank">
+    <a class="text-pink-500" href="https://www.tiktok.com/@_otiagosilva
      <i class="fab fa-tiktok">
      </i>
     </a>
-    <a class="text-white text-3xl" href="https://github.com/otiiagosilva" target="_blank">
+    <a class="text-white" href="https://github.com/otiiagosilva">
      <i class="fab fa-github">
      </i>
     </a>
    </div>
+   <a class="bg-white text-black py-2 px-4 rounded-full text-lg font-bold" href="#">
+    Portfólio
+   </a>
   </div>
  </body>
 </html>
