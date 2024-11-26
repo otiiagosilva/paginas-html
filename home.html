@@ -1,0 +1,132 @@
+<html>
+ <head>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   @keyframes blink {
+    0% {
+     opacity: 1;
+    }
+    50% {
+     opacity: 0;
+    }
+    100% {
+     opacity: 1;
+    }
+   }
+   .blinking-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+   }
+   @keyframes moveComet {
+    0% {
+     transform: translateX(-100vw) translateY(-100vh);
+    }
+    100% {
+     transform: translateX(100vw) translateY(100vh);
+    }
+   }
+   .comet {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    background: white;
+    box-shadow: 0 0 10px 2px white;
+    animation: moveComet 5s linear infinite;
+   }
+   .stars {
+    width: 1px;
+    height: 1px;
+    background: white;
+    box-shadow: 0 0 2px 1px white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: twinkle 2s infinite alternate;
+   }
+   @keyframes twinkle {
+    0% {
+     opacity: 0.5;
+    }
+    100% {
+     opacity: 1;
+    }
+   }
+  </style>
+ </head>
+ <body class="bg-black flex flex-col items-center justify-between min-h-screen relative overflow-hidden">
+  <div class="absolute inset-0">
+   <div class="comet">
+   </div>
+   <div class="stars" style="top: 10%; left: 20%; animation-delay: 0s;">
+   </div>
+   <div class="stars" style="top: 30%; left: 40%; animation-delay: 1s;">
+   </div>
+   <div class="stars" style="top: 50%; left: 60%; animation-delay: 2s;">
+   </div>
+   <div class="stars" style="top: 70%; left: 80%; animation-delay: 3s;">
+   </div>
+   <div class="stars" style="top: 90%; left: 10%; animation-delay: 4s;">
+   </div>
+  </div>
+  <nav class="relative z-10 mt-6 w-full">
+   <div class="flex justify-between items-center px-4">
+    <div class="text-white text-lg">
+     Menu
+    </div>
+    <button class="text-white text-2xl focus:outline-none" id="menu-toggle">
+     <i class="fas fa-bars"></i>
+    </button>
+   </div>
+   <ul class="flex flex-col space-y-4 text-white text-lg mt-4 hidden" id="menu">
+    <li>
+     <a class="hover:underline" href="#">
+      Home
+     </a>
+    </li>
+    <li>
+     <a class="hover:underline" href="#">
+      Redes Sociais
+     </a>
+    </li>
+    <li>
+     <a class="hover:underline" href="#">
+      Projetos
+     </a>
+    </li>
+    <li>
+     <a class="hover:underline" href="#">
+      Certificados
+     </a>
+    </li>
+    <li>
+     <a class="hover:underline" href="#">
+      Galeria
+     </a>
+    </li>
+    <li>
+     <a class="hover:underline" href="#">
+      Contato
+     </a>
+    </li>
+   </ul>
+  </nav>
+  <div class="text-center relative z-10 flex-grow flex items-center justify-center">
+   <p class="text-white text-3xl mb-4 shadow-lg">
+    <i class="fas fa-tools"></i> Em breve
+   </p>
+  </div>
+  <footer class="relative z-10 mb-6 text-white">
+   &copy; 2024
+  </footer>
+  <script>
+   document.getElementById('menu-toggle').addEventListener('click', function() {
+    var menu = document.getElementById('menu');
+    menu.classList.toggle('hidden');
+   });
+  </script>
+ </body>
+</html>
