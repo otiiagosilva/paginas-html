@@ -1,0 +1,129 @@
+<html lang="pt-BR">
+<head>
+  <meta property="og:title" content="@otiiagosilva">
+  <meta property="og:description" content="Perfil de Tiago Batista da Silva">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/121637450?s=400&u=642904ff86ccbd29d93e7bfff4f5a499a641618fc&v=4">
+  <meta property="og:url" content="https://otiiagosilva.github.io/profile/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    @font-face {
+      font-family: 'Impact';
+      src: local('Impact'), local('Impact'), url('https://fonts.cdnfonts.com/s/15363/Impact.woff') format('woff');
+    }
+    body {
+      font-family: 'Impact', fantasy;
+      background-color: black;
+      color: white;
+      overflow: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .blinking-cursor::after {
+      content: '|';
+      animation: blink 1s infinite;
+    }
+    @keyframes moveComet {
+      0% { transform: translateX(-100vw) translateY(-100vh); }
+      100% { transform: translateX(100vw) translateY(100vh); }
+    }
+    .comet {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 2px;
+      background: white;
+      box-shadow: 0 0 10px 2px white;
+      animation: moveComet 5s linear infinite;
+    }
+    .stars {
+      width: 1px;
+      height: 1px;
+      background: white;
+      box-shadow: 0 0 2px 1px white;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: twinkle 2s infinite alternate;
+    }
+    @keyframes twinkle {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+    .nav-link {
+      font-size: 1rem;
+    }
+    .content-area {
+      border: 1px solid white;
+      padding: 1rem;
+      max-width: 1400px; /* Increased width */
+      font-size: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="comet"></div>
+    <div class="stars" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+    <div class="stars" style="top: 30%; left: 40%; animation-delay: 1s;"></div>
+    <div class="stars" style="top: 50%; left: 60%; animation-delay: 2s;"></div>
+    <div class="stars" style="top: 70%; left: 80%; animation-delay: 3s;"></div>
+    <div class="stars" style="top: 90%; left: 10%; animation-delay: 4s;"></div>
+  </div>
+  <nav class="bg-transparent">
+    <div class="container mx-auto px-4 py-2 flex justify-center items-center">
+      <button class="text-white md:hidden" id="menu-button">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="hidden md:flex space-x-4" id="menu">
+        <a href="#" class="text-white nav-link">Acadêmico</a>
+        <a href="https://otiiagosilva.github.io/cv_otiiagosilva/" class="text-white nav-link">Profissional</a>
+        <a href="#" class="text-white nav-link">Pessoal</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container mx-auto text-center flex flex-col justify-center items-center min-h-screen" style="margin-top: 0vh;">
+    <div class="content-area mb-4">
+      <iframe src="https://otiiagosilva.github.io/cv_otiiagosilva/" class="w-full h-[70vh]"></iframe>
+    </div>
+    <div class="flex justify-center mt-4 space-x-3">
+      <a href="home.html" class="btn btn-outline-light">
+        <button class="btn btn-outline-light">
+          <i class="fas fa-arrow-left fa-2x"></i>
+        </button>
+      </a>
+      <a href="home.html" class="btn btn-outline-light">
+        <button class="btn btn-outline-light">
+          <i class="fas fa-home fa-2x"></i>
+        </button>
+      </a>
+      <a href="academico.html" class="btn btn-outline-light">
+        <button class="btn btn-outline-light">
+          <i class="fas fa-arrow-right fa-2x"></i>
+        </button>
+      </a>
+    </div>
+  </div>
+  <footer class="text-center py-3">
+    &copy; 2024
+  </footer>
+  <script>
+    document.getElementById('menu-button').addEventListener('click', function() {
+      var menu = document.getElementById('menu');
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+      } else {
+        menu.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
