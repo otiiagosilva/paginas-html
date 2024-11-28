@@ -74,12 +74,12 @@
       font-size: 1.25rem; /* Aumenta o tamanho da fonte do texto de apresentação */
     }
     .nav-link {
-      font-size: 1.125rem; /* Aumenta o tamanho da fonte do menu */
+      font-size: 1rem; /* Diminui o tamanho da fonte do menu */
     }
   </style>
 </head>
 <body>
-  <div class="absolute inset-0">
+  <div class="absolute inset-0 pointer-events-none">
     <div class="comet"></div>
     <div class="stars" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
     <div class="stars" style="top: 30%; left: 40%; animation-delay: 1s;"></div>
@@ -88,7 +88,7 @@
     <div class="stars" style="top: 90%; left: 10%; animation-delay: 4s;"></div>
   </div>
   <nav class="bg-transparent">
-    <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+    <div class="container mx-auto px-4 py-2 flex justify-center items-center">
       <button class="text-white md:hidden" id="menu-button">
         <i class="fas fa-bars"></i>
       </button>
@@ -97,18 +97,16 @@
         <a href="#" class="text-white nav-link">Redes Sociais</a>
         <a href="#" class="text-white nav-link">Projetos</a>
         <a href="#" class="text-white nav-link">Certificados</a>
-        <a href="#" class="text-white nav-link">Galeria</a>
-        <a href="#" class="text-white nav-link">Contato</a>
       </div>
     </div>
   </nav>
-  <div class="container mx-auto text-center flex flex-col justify-center items-center min-h-screen">
+  <div class="container mx-auto text-center flex flex-col justify-center items-center min-h-screen" style="margin-top: -5vh;">
     <div class="mb-4">
       <img alt="Foto de perfil de Tiago Batista da Silva" class="profile-pic" src="https://avatars.githubusercontent.com/u/121637450?s=400&u=642904ff86ccbd29d93e7bfff4f5a499a641618fc&v=4"/>
-      <h1 class="mt-3 intro-text">QUEM SOU EU</h1>
+      <h1 class="mt-3 intro-text">QUEM SOU EU?</h1>
     </div>
     <div class="content-area mb-4">
-      <p>32 anos, estudante de tecnologia no 1º semestre. Dedico este espaço para informações profissionais e acadêmicas.</p>
+      <p>Tiago, 32 anos, estudante de tecnologia no 1º semestre. Dedico este espaço para informações profissionais e acadêmicas.</p>
     </div>
     <div class="flex justify-center mt-4 space-x-3">
       <button class="btn btn-outline-light">
