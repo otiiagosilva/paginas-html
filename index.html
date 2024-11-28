@@ -1,110 +1,139 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
- <head>
+<head>
   <meta property="og:title" content="@otiiagosilva">
   <meta property="og:description" content="Perfil de Tiago Batista da Silva">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/121637450?s=400&u=642904ff86ccbd29d93e7bfff4f5a499a641618fc&v=4">
   <meta property="og:url" content="https://otiiagosilva.github.io/profile/">
-   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
-   @keyframes blink {
-    0% {
-     opacity: 1;
+    @font-face {
+      font-family: 'Impact';
+      src: local('Impact'), local('Impact'), url('https://fonts.cdnfonts.com/s/15363/Impact.woff') format('woff');
     }
-    50% {
-     opacity: 0;
+    body {
+      font-family: 'Impact', fantasy;
+      background-color: black;
+      color: white;
+      overflow: hidden;
+      position: relative;
+      min-height: 100vh;
     }
-    100% {
-     opacity: 1;
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
     }
-   }
-   .blinking-cursor::after {
-    content: '|';
-    animation: blink 1s infinite;
-   }
-   @keyframes moveComet {
-    0% {
-     transform: translateX(-100vw) translateY(-100vh);
+    .blinking-cursor::after {
+      content: '|';
+      animation: blink 1s infinite;
     }
-    100% {
-     transform: translateX(100vw) translateY(100vh);
+    @keyframes moveComet {
+      0% { transform: translateX(-100vw) translateY(-100vh); }
+      100% { transform: translateX(100vw) translateY(100vh); }
     }
-   }
-   .comet {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
-    height: 2px;
-    background: white;
-    box-shadow: 0 0 10px 2px white;
-    animation: moveComet 5s linear infinite;
-   }
-   .stars {
-    width: 1px;
-    height: 1px;
-    background: white;
-    box-shadow: 0 0 2px 1px white;
-    position: absolute;
-    top: 0;
-    left: 0;
-    animation: twinkle 2s infinite alternate;
-   }
-   @keyframes twinkle {
-    0% {
-     opacity: 0.5;
+    .comet {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 2px;
+      background: white;
+      box-shadow: 0 0 10px 2px white;
+      animation: moveComet 5s linear infinite;
     }
-    100% {
-     opacity: 1;
+    .stars {
+      width: 1px;
+      height: 1px;
+      background: white;
+      box-shadow: 0 0 2px 1px white;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: twinkle 2s infinite alternate;
     }
-   }
+    @keyframes twinkle {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+    .profile-pic {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 50%;
+    }
+    .intro-text {
+      text-transform: uppercase;
+      font-size: 2.5rem;
+    }
+    .content-area {
+      border: 1px solid white;
+      padding: 1rem;
+      max-width: 600px;
+      font-size: 1.25rem; /* Aumenta o tamanho da fonte do texto de apresentação */
+    }
+    .nav-link {
+      font-size: 1.125rem; /* Aumenta o tamanho da fonte do menu */
+    }
   </style>
- </head>
- <body class="bg-black flex items-center justify-center min-h-screen relative overflow-hidden">
+</head>
+<body>
   <div class="absolute inset-0">
-   <div class="comet">
-   </div>
-   <div class="stars" style="top: 10%; left: 20%; animation-delay: 0s;">
-   </div>
-   <div class="stars" style="top: 30%; left: 40%; animation-delay: 1s;">
-   </div>
-   <div class="stars" style="top: 50%; left: 60%; animation-delay: 2s;">
-   </div>
-   <div class="stars" style="top: 70%; left: 80%; animation-delay: 3s;">
-   </div>
-   <div class="stars" style="top: 90%; left: 10%; animation-delay: 4s;">
-   </div>
+    <div class="comet"></div>
+    <div class="stars" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+    <div class="stars" style="top: 30%; left: 40%; animation-delay: 1s;"></div>
+    <div class="stars" style="top: 50%; left: 60%; animation-delay: 2s;"></div>
+    <div class="stars" style="top: 70%; left: 80%; animation-delay: 3s;"></div>
+    <div class="stars" style="top: 90%; left: 10%; animation-delay: 4s;"></div>
   </div>
-  <div class="text-center relative z-10">
-   <img alt="Perfil de @otiiagosilva" class="rounded-full w-64 h-64 mx-auto mb-6" height="256" src="https://avatars.githubusercontent.com/u/121637450?s=400&u=642904ff86ccbd29d93e7bfff4f5a499a61618fc&v=4" width="256"/>
-   <p class="text-white text-xl mb-4 shadow-lg blinking-cursor">
-    @otiiagosilva
-   </p>
-   <div class="flex justify-center space-x-8 text-4xl mb-6">
-    <a class="text-blue-600" href="https://www.linkedin.com/in/otiiagosilva/">
-     <i class="fab fa-linkedin">
-     </i>
-    </a>
-    <a class="text-pink-600" href="https://www.instagram.com/_otiiagosilva/profilecard/?igsh=MXB5cjJxbDJzanBwbg==">
-     <i class="fab fa-instagram">
-     </i>
-    </a>
-    <a class="text-pink-500" href="https://www.tiktok.com/@_otiagosilva">
-     <i class="fab fa-tiktok">
-     </i>
-    </a>
-    <a class="text-white" href="https://github.com/otiiagosilva">
-     <i class="fab fa-github">
-     </i>
-    </a>
-   </div>
-   <a class="bg-white text-black py-2 px-4 rounded-full text-lg font-bold" href="home.html">
-    Portfólio
-   </a>
+  <nav class="bg-transparent">
+    <div class="container mx-auto px-4 py-2 flex justify-center items-center">
+      <button class="text-white md:hidden" id="menu-button">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="hidden md:flex space-x-4" id="menu">
+        <a href="#" class="text-white nav-link">Home</a>
+        <a href="#" class="text-white nav-link">Redes Sociais</a>
+        <a href="#" class="text-white nav-link">Projetos</a>
+        <a href="#" class="text-white nav-link">Certificados</a>
+        <a href="#" class="text-white nav-link">Galeria</a>
+        <a href="#" class="text-white nav-link">Contato</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container mx-auto text-center flex flex-col justify-center items-center min-h-screen">
+    <div class="mb-4">
+      <img alt="Foto de perfil de Tiago Batista da Silva" class="profile-pic" src="https://avatars.githubusercontent.com/u/121637450?s=400&u=642904ff86ccbd29d93e7bfff4f5a499a641618fc&v=4"/>
+      <h1 class="mt-3 intro-text">QUEM SOU EU</h1>
+    </div>
+    <div class="content-area mb-4">
+      <p>32 anos, estudante de tecnologia no 1º semestre. Dedico este espaço para informações profissionais e acadêmicas.</p>
+    </div>
+    <div class="flex justify-center mt-4 space-x-3">
+      <button class="btn btn-outline-light">
+        <i class="fas fa-arrow-left fa-2x"></i>
+      </button>
+      <button class="btn btn-outline-light">
+        <i class="fas fa-home fa-2x"></i>
+      </button>
+      <button class="btn btn-outline-light">
+        <i class="fas fa-arrow-right fa-2x"></i>
+      </button>
+    </div>
   </div>
- </body>
+  <footer class="text-center py-3">
+    &copy; 2024
+  </footer>
+  <script>
+    document.getElementById('menu-button').addEventListener('click', function() {
+      var menu = document.getElementById('menu');
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+      } else {
+        menu.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
 </html>
