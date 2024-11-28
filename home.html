@@ -134,32 +134,5 @@
       }
     });
   </script>
-     <script>
-        // Substitua 'senhaSecreta' pela sua senha
-        const senhaSecreta = '102030';
-        const conteudoOriginal = 'Este é o conteúdo secreto.';
-
-        // Criptografar o conteúdo
-        const ciphertext = CryptoJS.AES.encrypt(conteudoOriginal, senhaSecreta).toString();
-        document.getElementById('conteudoCriptografado').textContent = ciphertext;
-
-        // Função para descriptografar e exibir o conteúdo
-        function verificarSenha() {
-            const senhaDigitada = document.getElementById('senha').value;
-            if (senhaDigitada === senhaSecreta) {
-                const bytes = CryptoJS.AES.decrypt(ciphertext, senhaSecreta);
-                const originalText = bytes.toString(CryptoJS.enc.Utf8);
-                document.getElementById('conteudo').style.display = 'block';
-                document.getElementById('conteudo').textContent = originalText;
-            } else {
-                alert('Senha incorreta!');
-            }
-        }
-
-        document.getElementById('senhaForm').addEventListener('submit', (event) => {
-            event.preventDefault();
-            verificarSenha();
-        });
-    </script>
 </body>
 </html>
