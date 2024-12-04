@@ -1,0 +1,72 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta CPF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        .typing-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 0.15em solid orange;
+            animation: typing 3.5s steps(30, end), blink 0.75s step-end infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white p-6 flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-lg mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold mb-4 typing-text">Busca CREDLINK</h1>
+        <div class="flex flex-col sm:flex-row items-center mb-4">
+            <input type="text" id="cpfInput" placeholder="Digite o CPF" maxlength="11" class="flex-grow p-2 border border-gray-600 rounded mb-2 sm:mb-0 sm:mr-2 bg-gray-700 text-white">
+            <div class="flex space-x-2">
+                <button id="searchButton" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 flex items-center justify-center">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button id="clearButton" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Limpar</button>
+            </div>
+        </div>
+        <div id="result" class="mt-4 p-4 bg-gray-700 border border-gray-600 rounded"></div>
+    </div>
+
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const cpf = document.getElementById('cpfInput').value;
+            if (cpf.length === 11) {
+                fetch(`https://api.minerdapifoda.xyz:3000/api/credcpf?token=31919925a099e7bdd76b684ebcd02958&cpf=${cpf}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const formattedData = JSON.stringify(data, null, 2)
+                            .replace(/_/g, ' ')
+                            .replace(/"/g, '')
+                            .replace(/[{}[\]]/g, '');
+                        document.getElementById('result').innerText = formattedData;
+                    })
+                    .catch(error => {
+                        if (error.message.includes('404')) {
+                            document.getElementById('result').innerText = 'Não encontrado';
+                        } else {
+                            document.getElementById('result').innerText = 'Erro ao consultar CPF: ' + error;
+                        }
+                    });
+            } else {
+                alert('Por favor, digite um CPF válido com 11 dígitos.');
+            }
+        });
+
+        document.getElementById('clearButton').addEventListener('click', function() {
+            document.getElementById('cpfInput').value = '';
+            document.getElementById('result').innerText = '';
+        });
+    </script>
+
+</body>
+</html>
