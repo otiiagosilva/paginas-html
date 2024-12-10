@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta CPF- CREDLINK</title>
+    <title>Consulta CPF - WATCHDOGG 1.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
     <style>
@@ -24,9 +24,22 @@
 <body class="bg-gray-900 text-white p-6 flex items-center justify-center min-h-screen">
 
     <div class="w-full max-w-lg mx-auto bg-gray-800 p-6 rounded-lg shadow-lg">
-       <center> <h1 class="text-2xl font-bold mb-4 typing-text">Busca CREDLINK</h1></center>
+        <center><h1 class="text-2xl font-bold mb-4 typing-text">WATCHDOGG 1.0</h1></center>
         <div class="flex flex-col sm:flex-row items-center mb-4">
-            <input type="text" id="cpfInput" placeholder="Digite o CPF" maxlength="11" class="flex-grow p-2 border border-gray-600 rounded mb-2 sm:mb-0 sm:mr-2 bg-gray-700 text-white">
+            <select id="apiSelect" class="flex-grow p-2 border border-gray-600 rounded mb-2 sm:mb-0 sm:mr-2 bg-gray-700 text-white">
+                <option value="https://api.minerdapifoda.xyz:3000/api/credcpf?token=a1cf868ae91298598fa227e9a7d682b3&cpf=">Consulta credlink</option>
+                <option value="https://api.minerdapifoda.xyz:3000/api/cpf?token=a1cf868ae91298598fa227e9a7d682b3&cpf=">Consulta CPF Completo</option>
+                <option value="https://api.minerdapifoda.xyz:3000/api/spc?token=a1cf868ae91298598fa227e9a7d682b3&cpf=">Consulta SPC</option>
+                <option value="https://api.minerdapifoda.xyz:3000/api/cadsus?token=a1cf868ae91298598fa227e9a7d682b3&cpf=">Consulta Cadsus</option>
+                <option value="https://api.minerdapifoda.xyz:3000/api/inss?token=a1cf868ae91298598fa227e9a7d682b3&cpf=">Consulta INSS</option>
+                <option value="https://api.minerdapifoda.xyz:3000/api/score?token=a1cf868ae91298598fa227e9a7d682b3&cpf=">Consulta SCORE</option>
+                <option value="https://api.minerdapifoda.xyz:3000/api/telrec?token=a1cf868ae91298598fa227e9a7d682b3&telefone=">Consulta Telefone</option>
+                <option value="https://api.minerdapifoda.xyz:3000/api/rais?token=a1cf868ae91298598fa227e9a7d682b3&cpf=">Consulta RAIS</option>
+                <option value="https://api.minerdapifoda.xyz:3000/api/detran?token=a1cf868ae91298598fa227e9a7d682b3&placa=">Consulta Detran (PLACA)</option>
+            </select>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center mb-4">
+            <input type="text" id="inputField" placeholder="Digite o valor" maxlength="11" class="flex-grow p-2 border border-gray-600 rounded mb-2 sm:mb-0 sm:mr-2 bg-gray-700 text-white">
             <div class="flex space-x-2">
                 <button id="searchButton" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 flex items-center justify-center">
                     <i class="fas fa-search"></i>
@@ -39,12 +52,14 @@
 
     <script>
         document.getElementById('searchButton').addEventListener('click', function() {
-            const cpf = document.getElementById('cpfInput').value;
-            if (cpf.length === 11) {
-                fetch(`https://api.minerdapifoda.xyz:3000/api/credcpf?token=31919925a099e7bdd76b684ebcd02958&cpf=${cpf}`)
+            const apiUrl = document.getElementById('apiSelect').value;
+            const inputValue = document.getElementById('inputField').value;
+            if (inputValue.length > 0) {
+                fetch(apiUrl + inputValue)
                     .then(response => response.json())
                     .then(data => {
-                        const formattedData = JSON.stringify(data, null, 2)
+                        const filteredData = Object.fromEntries(Object.entries(data).filter(([key, value]) => value !== null && value !== ''));
+                        const formattedData = JSON.stringify(filteredData, null, 2)
                             .replace(/_/g, ' ')
                             .replace(/"/g, '')
                             .replace(/[{}[\]]/g, '');
@@ -54,16 +69,16 @@
                         if (error.message.includes('404')) {
                             document.getElementById('result').innerText = 'Não encontrado';
                         } else {
-                            document.getElementById('result').innerText = 'Erro ao consultar CPF: ' + error;
+                            document.getElementById('result').innerText = 'Erro ao consultar: ' + error;
                         }
                     });
             } else {
-                alert('Por favor, digite um CPF válido com 11 dígitos.');
+                alert('Por favor, digite um valor válido.');
             }
         });
 
         document.getElementById('clearButton').addEventListener('click', function() {
-            document.getElementById('cpfInput').value = '';
+            document.getElementById('inputField').value = '';
             document.getElementById('result').innerText = '';
         });
     </script>
