@@ -60,7 +60,7 @@
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen">
     <div class="text-center">
-        <h1 class="text-6xl glitch">WATCHDOGG.PY</h1>
+        <h2 class="text-6xl glitch">WATCHDOGG.PY</h1>
         <p class="mt-4">Watchdoggs Systems 2024 - Rastreadores</p>
         <p>Selecione um módulo para continuar:</p>
         <p class="mt-4 loading-text">Carregando<span>.</span><span>.</span><span>.</span></p>
@@ -75,8 +75,8 @@
             <li class="hidden">.E-mail</li>
             <li class="hidden">.Serasa</li>
             <li class="hidden">.Cadsus</li>
-            <li class="hidden">. PLACA veículo</li>
-            <li class="hidden">.CEP</li>
+            <li class="hidden">.Veículos</li>
+            <li class="hidden">.Cep</li>
         </ul>
     </div>
     <script>
@@ -86,11 +86,11 @@
             const percentageText = document.querySelector('.loading-bar span');
             let percentage = 0;
             const interval = setInterval(() => {
-                percentage += 1.5;
+                percentage += 8.5;
                 loadingBar.style.width = `${percentage}%`;
                 percentageText.textContent = `${Math.round(percentage)}%`;
                 if (percentage <= 100) {
-                    const index = Math.floor(percentage / 12.5) - 1;
+                    const index = Math.floor(percentage / 8.5) - 1;
                     if (items[index]) {
                         items[index].classList.remove('hidden');
                     }
