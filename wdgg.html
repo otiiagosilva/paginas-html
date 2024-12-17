@@ -1,0 +1,105 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYDLE Systems 2024 - Rastreadores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .glitch {
+            color: #00ff00;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.75), 0 0 10px rgba(0, 255, 0, 0.75), 0 0 15px rgba(0, 255, 0, 0.75);
+        }
+        .loading-bar {
+            display: flex;
+            align-items: center;
+        }
+        .loading-bar div {
+            width: 0;
+            height: 10px;
+            background: repeating-linear-gradient(
+                45deg,
+                #00ff00,
+                #00ff00 10px,
+                #ff0000 10px,
+                #ff0000 20px
+            );
+            animation: load 8s forwards;
+        }
+        @keyframes load {
+            to {
+                width: 100%;
+            }
+        }
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+        .loading-text span {
+            animation: blink 1s infinite;
+        }
+        .loading-text span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .loading-text span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen">
+    <div class="text-center">
+        <h1 class="text-6xl glitch">.WATCHDOGG</h1>
+        <p class="mt-4">SYDLE Systems 2024 - Rastreadores</p>
+        <p>Selecione um módulo para continuar:</p>
+        <p class="mt-4 loading-text">Carregando<span>.</span><span>.</span><span>.</span></p>
+        <div class="loading-bar mt-2 w-64">
+            <div></div>
+            <span class="ml-2">0%</span>
+        </div>
+        <ul class="mt-4 text-left">
+            <li class="hidden">.CPF Completo</li>
+            <li class="hidden">.CNPJ Completo</li>
+            <li class="hidden">.Telefone</li>
+            <li class="hidden">.E-mail</li>
+            <li class="hidden">.Serasa</li>
+            <li class="hidden">.Cadsus</li>
+            <li class="hidden">. PLACA veículo</li>
+            <li class="hidden">.CEP</li>
+        </ul>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('ul li');
+            const loadingBar = document.querySelector('.loading-bar div');
+            const percentageText = document.querySelector('.loading-bar span');
+            let percentage = 0;
+            const interval = setInterval(() => {
+                percentage += 12.5;
+                loadingBar.style.width = `${percentage}%`;
+                percentageText.textContent = `${Math.round(percentage)}%`;
+                if (percentage <= 100) {
+                    const index = Math.floor(percentage / 12.5) - 1;
+                    if (items[index]) {
+                        items[index].classList.remove('hidden');
+                    }
+                }
+                if (percentage >= 100) {
+                    clearInterval(interval);
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
