@@ -86,11 +86,11 @@
             const percentageText = document.querySelector('.loading-bar span');
             let percentage = 0;
             const interval = setInterval(() => {
-                percentage += 8.5;
+                percentage += 12.5;
                 loadingBar.style.width = `${percentage}%`;
                 percentageText.textContent = `${Math.round(percentage)}%`;
                 if (percentage <= 100) {
-                    const index = Math.floor(percentage / 8.5) - 1;
+                    const index = Math.floor(percentage / 12.5) - 1;
                     if (items[index]) {
                         items[index].classList.remove('hidden');
                     }
