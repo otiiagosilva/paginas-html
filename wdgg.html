@@ -60,8 +60,8 @@
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen">
     <div class="text-center">
-        <h1 class="text-6xl glitch">WATCHDOGG.EXE</h1>
-        <p class="mt-4">SYDLE Systems 2024 - Rastreadores</p>
+        <h1 class="text-6xl glitch">WATCHDOGG.PY</h1>
+        <p class="mt-4">Watchdoggs Systems 2024 - Rastreadores</p>
         <p>Selecione um módulo para continuar:</p>
         <p class="mt-4 loading-text">Carregando<span>.</span><span>.</span><span>.</span></p>
         <div class="loading-bar mt-2 w-64">
@@ -86,7 +86,7 @@
             const percentageText = document.querySelector('.loading-bar span');
             let percentage = 0;
             const interval = setInterval(() => {
-                percentage += 12.5;
+                percentage += 1.5;
                 loadingBar.style.width = `${percentage}%`;
                 percentageText.textContent = `${Math.round(percentage)}%`;
                 if (percentage <= 100) {
