@@ -1,15 +1,20 @@
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WATCHDOGG Systems 2024 - Rastreadores</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        body {
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   WATCHDOGG Systems 2024 - Rastreadores
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
             background-color: black;
             color: #00ff00;
             font-family: 'Courier New', Courier, monospace;
+            position: relative;
+            overflow: hidden;
         }
         .glitch {
             color: #00ff00;
@@ -22,13 +27,7 @@
         .loading-bar div {
             width: 0;
             height: 10px;
-            background: repeating-linear-gradient(
-                45deg,
-                #00ff00,
-                #00ff00 10px,
-                #ff0000 10px,
-                #ff0000 20px
-            );
+            background: #00ff00;
             animation: load 8s forwards;
         }
         @keyframes load {
@@ -56,31 +55,122 @@
         .hidden {
             display: none;
         }
-    </style>
-</head>
-<body class="flex flex-col items-center justify-center min-h-screen">
-    <div class="text-center">
-        <h1 class="text-6xl glitch">WATCHDOGG</h1>
-        <p class="mt-4">Watchdoggs Systems 2024 - Rastreadores</p>
-        <p>Selecione um módulo para continuar:</p>
-        <p class="mt-4 loading-text">Carregando<span>.</span><span>.</span><span>.</span></p>
-        <div class="loading-bar mt-2 w-64">
-            <div></div>
-            <span class="ml-2">0%</span>
-        </div>
-        <ul class="mt-4 text-left">
-            <li class="hidden">.CPF Completo</li>
-            <li class="hidden">.CNPJ Completo</li>
-            <li class="hidden">.Telefone</li>
-            <li class="hidden">.E-mail</li>
-            <li class="hidden">.Serasa</li>
-            <li class="hidden">.Cadsus</li>
-            <li class="hidden">.Veículos</li>
-            <li class="hidden">.Cep</li>
-        </ul>
+        .animate-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 2s steps(30, end), blink-caret .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #00ff00; }
+        }
+        .menu-item {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .menu-item:hover {
+            color: #ff0000;
+        }
+        .background-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+            overflow: hidden;
+        }
+        .background-text img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+  </style>
+ </head>
+ <body class="flex flex-col items-center justify-start min-h-screen pt-20">
+  <div class="background-text">
+   <img alt="Background with hacker-style green text on a black background" height="1080" src="https://storage.googleapis.com/a1aa/image/IEiO7x3YDBbUKZ9ZrlMHh10Ykigh73XcMntrjJywBoXTACfJA.jpg" width="1920"/>
+  </div>
+  <div class="text-center">
+   <h1 class="text-6xl glitch">
+    WATCHDOGG
+   </h1>
+   <p class="mt-4">
+    Watchdoggs Systems 2024 - Rastreadores
+   </p>
+   <p class="mt-4">
+    Selecione um módulo para continuar:
+   </p>
+   <p class="mt-4 loading-text">
+    Carregando
+    <span>
+     .
+    </span>
+    <span>
+     .
+    </span>
+    <span>
+     .
+    </span>
+   </p>
+   <div class="loading-bar mt-2 w-128">
+    <div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+    <span class="ml-2">
+     0%
+    </span>
+   </div>
+   <ul class="mt-4 text-left">
+    <li class="hidden menu-item">
+     <span class="animate-text">
+      .CPF Completo
+     </span>
+    </li>
+    <li class="hidden menu-item">
+     <span class="animate-text">
+      .CNPJ Completo
+     </span>
+    </li>
+    <li class="hidden menu-item">
+     <span class="animate-text">
+      .Telefone
+     </span>
+    </li>
+    <li class="hidden menu-item">
+     <span class="animate-text">
+      .E-mail
+     </span>
+    </li>
+    <li class="hidden menu-item">
+     <span class="animate-text">
+      .Serasa
+     </span>
+    </li>
+    <li class="hidden menu-item">
+     <span class="animate-text">
+      .Cadsus
+     </span>
+    </li>
+    <li class="hidden menu-item">
+     <span class="animate-text">
+      .Veículos
+     </span>
+    </li>
+    <li class="hidden menu-item">
+     <span class="animate-text">
+      .Cep
+     </span>
+    </li>
+   </ul>
+  </div>
+  <script>
+   document.addEventListener('DOMContentLoaded', () => {
             const items = document.querySelectorAll('ul li');
             const loadingBar = document.querySelector('.loading-bar div');
             const percentageText = document.querySelector('.loading-bar span');
@@ -100,6 +190,6 @@
                 }
             }, 1000);
         });
-    </script>
-</body>
+  </script>
+ </body>
 </html>
