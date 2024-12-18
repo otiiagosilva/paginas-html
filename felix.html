@@ -1,50 +1,65 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel- Felix Lava-Jato</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Formulário de Cadastro</title>
 </head>
-<body class="bg-gray-100 font-roboto">
-    <div class="container mx-auto p-4">
-        <div class="bg-white shadow-md rounded-lg p-6">
-            <h1 class="text-2xl font-bold mb-4">Felix - Lava Jato</h1>
-            <form action="/cadastrar-servico" method="POST" class="space-y-4">
-                <div>
-                    <label for="nome" class="block text-sm font-medium text-gray-700">Nome</label>
-                    <input type="text" id="nome" name="nome" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
-                </div>
-                <div>
-                    <label for="marca" class="block text-sm font-medium text-gray-700">Marca</label>
-                    <input type="text" id="marca" name="marca" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
-                </div>
-                <div>
-                    <label for="modelo" class="block text-sm font-medium text-gray-700">Modelo</label>
-                    <input type="text" id="modelo" name="modelo" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
-                </div>
-                <div>
-                    <label for="placa" class="block text-sm font-medium text-gray-700">Placa</label>
-                    <input type="text" id="placa" name="placa" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
-                </div>
-                <div>
-                    <label for="preco" class="block text-sm font-medium text-gray-700">Preço</label>
-                    <input type="number" id="preco" name="preco" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
-                </div>
-                <div>
-                    <label for="descricao" class="block text-sm font-medium text-gray-700">Descrição</label>
-                    <textarea id="descricao" name="descricao" rows="4" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required></textarea>
-                </div>
-                <div>
-                    <label for="imagem" class="block text-sm font-medium text-gray-700">Imagem do Serviço</label>
-                    <input type="file" id="imagem" name="imagem" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                </div>
-                <div class="flex justify-end">
-                    <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Cadastrar Serviço</button>
-                </div>
-            </form>
+<body>
+    <h1>Cadastro de Serviço</h1>
+    <form id="serviceForm">
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
         </div>
-    </div>
+        <div>
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca" required>
+        </div>
+        <div>
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" name="modelo" required>
+        </div>
+        <div>
+            <label for="placa">Placa:</label>
+            <input type="text" id="placa" name="placa" required>
+        </div>
+        <div>
+            <label for="preco">Preço:</label>
+            <input type="number" id="preco" name="preco" required>
+        </div>
+        <div>
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" rows="4" required></textarea>
+        </div>
+        <button type="button" onclick="sendEmail()">Enviar por E-mail</button>
+    </form>
+
+    <script>
+        function sendEmail() {
+            // Captura os valores do formulário
+            const nome = document.getElementById("nome").value;
+            const marca = document.getElementById("marca").value;
+            const modelo = document.getElementById("modelo").value;
+            const placa = document.getElementById("placa").value;
+            const preco = document.getElementById("preco").value;
+            const descricao = document.getElementById("descricao").value;
+
+            // Prepara o conteúdo do e-mail
+            const subject = encodeURIComponent("Cadastro de Serviço");
+            const body = encodeURIComponent(
+                `Detalhes do Serviço:\n\n` +
+                `Nome: ${nome}\n` +
+                `Marca: ${marca}\n` +
+                `Modelo: ${modelo}\n` +
+                `Placa: ${placa}\n` +
+                `Preço: R$${preco}\n` +
+                `Descrição: ${descricao}`
+            );
+
+            // Abre o cliente de e-mail
+            window.location.href = `mailto: otiiagosilva@gmail.com?subject=${subject}&body=${body}`;
+        }
+    </script>
 </body>
 </html>
